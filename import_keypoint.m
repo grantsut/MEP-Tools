@@ -1,5 +1,11 @@
 %% Import Keypoint
-fn = 'M1--APB__';
+clear
+filedir = 'D:\MATLAB\MEP-Tools\test_001_x_No_Name\MEP_Cortical_Spinal\Medianus\Right';
+filename = 'M1--APB__';
+
+fntmp = fullfile(filedir,filename);
+fn = strrep(fntmp, '\', '\\'); % This removes any accidental excape characters from the file name string.
+
 extracts = zeros(17,4800);
 for i = 1:17
     extracts(i,:) = importdata(sprintf([fn '%03u.txt'],i));

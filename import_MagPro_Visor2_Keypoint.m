@@ -45,13 +45,16 @@ extracts = zeros(17,4800);
 for i = 1:17
     extracts(i,:) = importdata(sprintf([fn '%03u.txt'],i));
 end
+meps = extracts;
+sl = 1/48000;
+t = sl:sl:0.1;
 
 %% Plot single MEP from imported MagPro or Visor2 data. Optionally save trace to a directory
 savedir = 'D:\MATLAB\MEPcompare\GrantVisorMEPs\extracted'; % Name of directory in file directory for saved files
 % savedir = 'D:\MATLAB\MEPcompare\GrantMagProMeps\extracted'; % Name of directory in file directory for saved files
 savefile = false;
 filenameprefix = 'GrantVisorMEP_';
-idx = 30; % Index of the MEP to be displayed
+idx = 1; % Index of the MEP to be displayed
 pkdelay = 3; % (ms) Find peak this long after the start of the trace (for ignoring TMS artifacts)
 
 pkoffset = find(t>pkdelay, 1 ); % (ms) Only look for peaks this long after the trigger
