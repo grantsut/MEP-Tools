@@ -8,12 +8,12 @@ filestring = fullfile(filedir,filename);
 
 [traw,meps] = MagProImport(filestring);
 
-% meps = meps';
+meps = meps';
 t  = traw / 1000; % Convert time to milleseconds
-% t = t';
+t = t';
 %% Import Visor2 data
 clear
-filedir = 'D:\MATLAB\MEP-Tools\GrantVisorMEPs';
+filedir = 'D:\MATLAB\MEPcompare\GrantVisorMEPs';
 filename = '20190806_1124-emgfbpfbs.cnt';
 filestring = fullfile(filedir,filename);
 info = eepv4_read_info(filestring);

@@ -100,8 +100,10 @@ end
 
 %% Allocate imported array to column variable names
 t = cell2mat(raw(:, 1));
+t = t';
 % if ntraces == 1
 %     m = cell2mat(raw(:, 2));
 % else
 m = cell2mat(raw(:, 2:ntraces+1));
+m = m';
 % end
