@@ -37,16 +37,17 @@ meps = extracts;
 clear
 filedir = 'D:\MATLAB\MEP-Tools\test_001_x_No_Name\MEP_Cortical_Spinal\Medianus\Right';
 filename = 'M1--APB__';
+samplerate = 48000;
 
 fntmp = fullfile(filedir,filename);
 fn = strrep(fntmp, '\', '\\'); % This removes any accidental excape characters from the file name string.
 
-extracts = zeros(17,4800);
+extracts = zeros(17,samplerate/10);
 for i = 1:17
     extracts(i,:) = importdata(sprintf([fn '%03u.txt'],i));
 end
 meps = extracts;
-sl = 1/48000;
+sl = 1/samplerate;
 t = sl:sl:0.1;
 
 %% Plot single MEP from imported MagPro or Visor2 data. Optionally save trace to a directory
@@ -54,7 +55,7 @@ savedir = 'D:\MATLAB\MEPcompare\GrantVisorMEPs\extracted'; % Name of directory i
 % savedir = 'D:\MATLAB\MEPcompare\GrantMagProMeps\extracted'; % Name of directory in file directory for saved files
 savefile = false;
 filenameprefix = 'GrantVisorMEP_';
-idx = 1; % Index of the MEP to be displayed
+idx = 2; % Index of the MEP to be displayed
 pkdelay = 3; % (ms) Find peak this long after the start of the trace (for ignoring TMS artifacts)
 
 pkoffset = find(t>pkdelay, 1 ); % (ms) Only look for peaks this long after the trigger
